@@ -33,7 +33,7 @@ This is a Python application built using the tkinter library for SSL certificate
 
 ## Usage
 
-1. Install the required dependencies mentioned in the "Requirements" section.
+1. Install the required dependencies mentioned in the "Requirements" section by "pip install -r requirements.txt" .
 2. Run the Python script: `python ssl-certy.py`.
 3. The main window of the application will open, displaying the options to verify and generate SSL certificates.
 4. Click on the "Verify SSL Certificate" button to verify a certificate.
