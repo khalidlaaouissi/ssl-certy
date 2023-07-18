@@ -229,7 +229,7 @@ def generate_ssl_certificate():
 generate_button = tk.Button(window, text="Generate SSL Certificate", command=generate_ssl_certificate, bg="#3b83bd", fg="white", relief=tk.FLAT)
 generate_button.pack(pady=15)
 # Set the copyright notice
-copyright_label = tk.Label(window, text="Author: Khalid Laaoussi © .", font=("Arial", 10), bg="#904684", pady=15)
+copyright_label = tk.Label(window, text="Author: Khalid Laaoussi © .", font=("Arial", 10), bg="#3b83bd", pady=15)
 copyright_label.pack()
 # Frame for LinkedIn and GitHub buttons
 button_frame = tk.Frame(window, bg="#d1c9bf")
