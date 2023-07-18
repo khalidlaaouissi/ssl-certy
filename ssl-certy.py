@@ -228,9 +228,6 @@ def generate_ssl_certificate():
 # Generate Certificate Section
 generate_button = tk.Button(window, text="Generate SSL Certificate", command=generate_ssl_certificate, bg="#3b83bd", fg="white", relief=tk.FLAT)
 generate_button.pack(pady=15)
-# Set the copyright notice
-copyright_label = tk.Label(window, text="Author: Khalid Laaoussi © .", font=("Arial", 10), bg="#d1c9bf", pady=15)
-copyright_label.pack()
 # Frame for LinkedIn and GitHub buttons
 button_frame = tk.Frame(window, bg="#d1c9bf")
 button_frame.pack(pady=10)
@@ -247,7 +244,9 @@ def open_github():
 
 github_button = tk.Button(button_frame, text="GitHub", command=open_github, bg="#0a0a0a", fg="white", relief=tk.RAISED)
 github_button.pack(side=tk.LEFT, padx=5)
-
+# Set the copyright notice
+copyright_label = tk.Label(window, text="Author: Khalid Laaoussi © .", font=("Arial", 10), bg="#d1c9bf", pady=15)
+copyright_label.pack()
 
 # Start the Tkinter event loop
 window.mainloop()
