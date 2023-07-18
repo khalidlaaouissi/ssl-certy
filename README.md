@@ -49,6 +49,7 @@ This is a Python application built using the tkinter library for SSL certificate
 ![Main Window](screenshots/main_window.png)
 ![Certificate Verification](screenshots/verification_window.png)
 ![Certificate Details](screenshots/details_window.png)
+![Certificate Details](screenshots/details_window1.png)
 ![Certificate Generation](screenshots/generation_window.png)
 
 ## Additional Information
