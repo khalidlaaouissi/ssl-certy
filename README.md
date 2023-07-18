@@ -45,11 +45,17 @@ This is a Python application built using the tkinter library for SSL certificate
 10. The certificate will be saved, and a message will be displayed with the file path.
 
 ## Screenshots
-
+### Main Window
 ![Main Window](screenshots/main_window.png)
+
+### Certificate Verification
 ![Certificate Verification](screenshots/verification_window.png)
+
+### Certificate Details
 ![Certificate Details](screenshots/details_window.png)
 ![Certificate Details](screenshots/details_window1.png)
+
+### Certificate Generation
 ![Certificate Generation](screenshots/generation_window.png)
 
 ## Additional Information
