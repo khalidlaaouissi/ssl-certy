@@ -1,0 +1,10 @@
+tkinter
+ssl
+socket
+urllib3
+datetime
+collections
+cryptography
+pyOpenSSL
+webbrowser
+idna
