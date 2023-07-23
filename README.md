@@ -59,6 +59,8 @@ SSL Certy is a simple tool for SSL certificate operations, including verifying S
 
 ### Certificate Generation
 ![Certificate Generation](screenshots/generation_window.png)
+### Renew SSL
+![Renew SSL](screenshots/renew_window.png)
 
 ## Additional Information
 
