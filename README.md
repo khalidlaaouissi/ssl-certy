@@ -17,7 +17,7 @@ SSL Certy is a simple tool for SSL certificate operations, including verifying S
   - Generate self-signed SSL certificates with customizable parameters.
   - Specify the key size, common name, validity period, and hash algorithm.
   - Export the generated certificate as a .pem file.
-  
+
 - Renew SSL certificates
 
 ## Requirements
@@ -66,3 +66,8 @@ SSL Certy is a simple tool for SSL certificate operations, including verifying S
 - LinkedIn: https://www.linkedin.com/in/laaouissikh/
 
 Feel free to reach out if you have any questions or suggestions!
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
