@@ -1,10 +1,11 @@
-# SSL Certificate Verification & Generation
+# SSL Certificate Verification , Generation & Renew
 
-This is a Python application built using the tkinter library for SSL certificate verification and generation. It provides the following functionalities:
+SSL Certy is a simple tool for SSL certificate operations, including verifying SSL certificates from files or URLs, generating self-signed SSL certificates, and renewing SSL certificates, it provides the following functionalities:
 
 - Verification of SSL certificates by either uploading a .pem file or entering a URL.
 - Displaying detailed information about the verified SSL certificate.
 - Generation of self-signed SSL certificates with customizable parameters.
+- Renewing SSL certification
 
 ## Features
 
@@ -16,6 +17,8 @@ This is a Python application built using the tkinter library for SSL certificate
   - Generate self-signed SSL certificates with customizable parameters.
   - Specify the key size, common name, validity period, and hash algorithm.
   - Export the generated certificate as a .pem file.
+  
+- Renew SSL certificates
 
 ## Requirements
 
