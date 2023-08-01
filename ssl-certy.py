@@ -265,17 +265,28 @@ def generate_ssl_certificate():
         builder = builder.sign(private_key, hashes.SHA256(), default_backend())
 
         # Open a file dialog to save the certificate as a .pem file
-        file_path = filedialog.asksaveasfilename(filetypes=[("PEM files", "*.pem")])
-        if file_path:
-            if not file_path.lower().endswith(".pem"):
-                file_path += ".pem"
+        cert_file_path = filedialog.asksaveasfilename(filetypes=[("PEM files", "*.pem")])
+        if cert_file_path:
+            if not cert_file_path.lower().endswith(".pem"):
+                cert_file_path+= ".pem"
+
+            key_file_path = cert_file_path.replace(".pem", "_private_key.pem")
 
             try:
                 # Export the certificate as a .pem file
-                with open(file_path, "wb") as pem_file:
+                with open(cert_file_path, "wb") as pem_file:
                     pem_file.write(builder.public_bytes(Encoding.PEM))
-                messagebox.showinfo("Certificate Generation", f"Certificate exported as: {file_path}")
 
+                # Export the private key as a .pem file
+                with open(key_file_path, "wb") as key_file:
+                    key_file.write(private_key.private_bytes(
+                        Encoding.PEM,
+                        PrivateFormat.PKCS8,
+                        NoEncryption()
+                    ))
+                
+                messagebox.showinfo("Certificate Generation", f"Certificate and private key exported as: {cert_file_path} and {key_file_path}")
+                
             except IOError as e:
                 messagebox.showerror("Certificate Generation", f"An error occurred while exporting the certificate: {str(e)}")
             except Exception as e:
@@ -355,7 +366,7 @@ def renew_certificate():
             email = get_attribute_or_empty_string(cert, x509.NameOID.EMAIL_ADDRESS)
 
             subject_name = create_generic_subject_name(country, state, locality, organization, common_name, email)
-
+            
             # Create a new private key
             private_key = generate_private_key()
 
@@ -373,16 +384,37 @@ def renew_certificate():
             new_cert_file_path = filedialog.asksaveasfilename(filetypes=[("PEM Files", "*.pem")])
 
             if new_cert_file_path:
+
                 if not new_cert_file_path.lower().endswith(".pem"):
                     new_cert_file_path += ".pem"
 
-                # Export the new certificate as a .pem file
-                with open(new_cert_file_path, "wb") as new_cert_file:
-                    new_cert_file.write(builder.public_bytes(Encoding.PEM))
+                key_file_path = new_cert_file_path.replace(".pem", "_private_key.pem")
 
-                messagebox.showinfo("Certificate Renewal", f"New certificate saved as: {new_cert_file_path}")
+                try:
+                    # Export the new certificate as a .pem file
+                    with open(new_cert_file_path, "wb") as new_cert_file:
+                         new_cert_file.write(builder.public_bytes(Encoding.PEM))
+                    
+                    # Export the new private key as a .pem file
+                    with open(key_file_path, "wb") as key_file:
+                        key_file.write(private_key.private_bytes(
+                            Encoding.PEM,
+                            PrivateFormat.PKCS8,
+                            NoEncryption()
+                        ))
 
-            # Close the renewal window after successful renewal
+                    messagebox.showinfo("Certificate Renewal", f"New certificate saved as: {new_cert_file_path}")
+
+                except IOError as e:
+                    messagebox.showerror("Certificate Renewal", f"An error occurred while exporting the certificate: {str(e)}")
+                except Exception as e:
+             # Handle any other errors that may occur during certificate renewal
+                    messagebox.showerror("Error", f"Failed to renew the certificate:\n{e}")
+                    error_message = f"An error occurred: {str(e)}"
+                    error_code = repr(e)
+                    window.clipboard_clear()
+                    window.clipboard_append(error_code)
+        # Close the renewal window after successful renewal
             renewal_window.destroy()
 
         except Exception as e:
@@ -420,11 +452,11 @@ github_button = tk.Button(button_frame, text="GitHub", command=open_github, bg="
 github_button.pack(side=tk.LEFT, padx=5)
 
 # Set the copyright notice
-copyright_label = tk.Label(window, text="Version 0.17", font=("Arial", 10), bg="#d1c9bf", pady=15)
+copyright_label = tk.Label(window, text="Version 0.2", font=("Arial", 10), bg="#d1c9bf", pady=15)
 copyright_label.pack()
 # Function to handle the About menu option
 def show_about():
-    about_message = "SSL Certy - All in One\nVersion 0.17\n\nA simple tool for SSL certificate operations:\n- Verify SSL certificates from files or URLs\n- Generate self-signed SSL certificates\n- Renew SSL certificates\n\nAuthor: Khalid Laaouissi"
+    about_message = "SSL Certy - All in One\nVersion 0.2\n\nA simple tool for SSL certificate operations:\n- Verify SSL certificates from files or URLs\n- Generate self-signed SSL certificates\n- Renew SSL certificates\n\nAuthor: Khalid Laaouissi"
     messagebox.showinfo("About SSL Certy", about_message)
 
 # Menu Bar
